@@ -12,7 +12,7 @@ const defaultOptions: Options = {
   debug: false
 }
 
-const myModule: Module<Options> = function(moduleOptions?: Options) {
+const chiffreModule: Module<Options> = function(moduleOptions?: Options) {
   const options: Options = Object.assign(
     {},
     defaultOptions,
@@ -50,4 +50,4 @@ const myModule: Module<Options> = function(moduleOptions?: Options) {
   }
 }
 
-export default myModule
+export default chiffreModule
