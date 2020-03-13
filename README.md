@@ -9,9 +9,9 @@ This [Nuxt.js] module automatically sends first page and route change events to 
 Install with:
 
 ```bash
-npm install @chiffre/nuxt-chiffre
+npm install nuxt-chiffre
 // or
-yarn add @chiffre/nuxt-chiffre
+yarn add nuxt-chiffre
 ```
 
 Add `nuxt-chiffre` to modules section of `nuxt.config.js`:
@@ -19,7 +19,7 @@ Add `nuxt-chiffre` to modules section of `nuxt.config.js`:
 ```js
 export default {
   modules: [
-    ['@chiffre/nuxt-chiffre'],
+    ['nuxt-chiffre'],
   ],
   chiffre: {
     projectId: '<chiffre-project-id>',
