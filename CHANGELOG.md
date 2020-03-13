@@ -8,5 +8,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release of nuxt-chiffre
 
-[unreleased]: https://gitlab.com/hambush/website/compare/0.1.0...develop
-[0.1.0]: https://gitlab.com/hambush/website/tree/0.1.0
+[unreleased]: https://github.com/rclement/nuxt-chiffre/compare/0.1.0...develop
+[0.1.0]: https://github.com/rclement/nuxt-chiffre/tree/0.1.0
