@@ -1,9 +1,11 @@
 name: nuxt-chiffre cd
 
-on:
-  push:
-    tags:
-      - "*"
+# on:
+#   push:
+#     tags:
+#       - "*"
+
+on: [push]
 
 jobs:
   deploy:
@@ -14,6 +16,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
+          registry-url: 'https://registry.npmjs.org'
       - name: Cache Node.js modules
         uses: actions/cache@v1
         with:
