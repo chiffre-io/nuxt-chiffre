@@ -20,6 +20,9 @@
     "analytics",
     "e2ee"
   ],
+  "files": [
+    "/dist"
+  ],
   "main": "dist/module.js",
   "scripts": {
     "clean": "rm -rf dist",
