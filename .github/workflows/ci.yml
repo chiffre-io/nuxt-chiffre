@@ -1,4 +1,4 @@
-name: nuxt-chiffre ci-cd
+name: nuxt-chiffre ci
 
 on: [push]
 
