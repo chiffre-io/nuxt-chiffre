@@ -68,10 +68,10 @@ jobs:
           path: dist
 
   deploy:
-    if: ${{ env.IS_PRODUCTION }}
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
+    if: env.IS_PRODUCTION
 
     steps:
       - uses: actions/checkout@v2
