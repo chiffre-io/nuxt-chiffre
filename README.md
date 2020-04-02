@@ -2,6 +2,10 @@
 
 > Add Chiffre Analytics to your nuxt.js application
 
+[![NPM Version](https://img.shields.io/npm/v/nuxt-chiffre)](https://www.npmjs.com/package/nuxt-chiffre)
+[![GitHub Action CI/CD](https://github.com/rclement/nuxt-chiffre/workflows/nuxt-chiffre%20CI/CD/badge.svg)](https://github.com/rclement/nuxt-chiffre/actions?query=workflow%3A%22nuxt-chiffre+CI%2FCD%22)
+[![Coverage Status](https://img.shields.io/codecov/c/github/rclement/nuxt-chiffre)](https://codecov.io/gh/rclement/nuxt-chiffre)
+
 This [Nuxt.js] module automatically sends first page and route change events to [Chiffre Analytics]
 
 ## Setup
@@ -31,7 +35,7 @@ export default {
 
 ## Module Options
 
-### `projectId` (require)
+### `projectId` (required)
 
 The Chiffre project identifier.
 
