@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Check dependencies
-        run: npm audit -- production
+        run: npm audit --production
       - name: Check code lint
         run: npm run lint
       - name: Run tests
