@@ -2,9 +2,6 @@ name: nuxt-chiffre CI/CD
 
 on: [push]
 
-env:
-  IS_PRODUCTION: ${{ contains(github.ref, 'tags') }}
-
 jobs:
   test:
     name: Test
@@ -71,7 +68,7 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    if: env.IS_PRODUCTION
+    if: contains(github.ref, 'tags')
 
     steps:
       - uses: actions/checkout@v2
