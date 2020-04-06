@@ -18,11 +18,11 @@ function generateModuleThis(chiffreOptions?: Options): ModuleThis {
     options: {
       dev: false,
       head: {
-        script: []
+        script: [],
       },
-      ...(chiffreOptions ? { chiffre: chiffreOptions } : {})
+      ...(chiffreOptions ? { chiffre: chiffreOptions } : {}),
     },
-    chiffreModule: module
+    chiffreModule: module,
   }
 }
 
@@ -38,16 +38,16 @@ function checkEnabled(moduleThis: ModuleThis, chiffreOptions: Options): void {
         type: 'application/json',
         json: {
           publicKey: chiffreOptions.publicKey,
-          pushURL: `https://push.chiffre.io/${chiffreOptions.projectId}`
-        }
+          pushURL: `https://push.chiffre.io/${chiffreOptions.projectId}`,
+        },
       },
       {
         async: true,
         crossOrigin: 'anonymous',
         defer: true,
-        src: 'https://embed.chiffre.io/analytics.js'
-      }
-    ]
+        src: 'https://embed.chiffre.io/analytics.js',
+      },
+    ],
   })
 }
 
@@ -72,7 +72,7 @@ describe('module nuxt-chiffre production', () => {
     const chiffreOptions = {
       projectId: 'fake-project-id',
       publicKey: 'fake-public-key',
-      debug: false
+      debug: false,
     }
     const self = generateModuleThis(chiffreOptions)
 
@@ -85,7 +85,7 @@ describe('module nuxt-chiffre production', () => {
     const chiffreOptions = {
       projectId: undefined,
       publicKey: 'fake-public-key',
-      debug: false
+      debug: false,
     }
     const self = generateModuleThis(chiffreOptions)
 
@@ -98,7 +98,7 @@ describe('module nuxt-chiffre production', () => {
     const chiffreOptions = {
       projectId: 'fake-project-id',
       publicKey: undefined,
-      debug: false
+      debug: false,
     }
     const self = generateModuleThis(chiffreOptions)
 
@@ -121,7 +121,7 @@ describe('module nuxt-chiffre development', () => {
     const chiffreOptions = {
       projectId: 'fake-project-id',
       publicKey: 'fake-public-key',
-      debug: false
+      debug: false,
     }
     const self = generateModuleThis(chiffreOptions)
 
@@ -134,7 +134,7 @@ describe('module nuxt-chiffre development', () => {
     const chiffreOptions = {
       projectId: 'fake-project-id',
       publicKey: 'fake-public-key',
-      debug: true
+      debug: true,
     }
     const self = generateModuleThis(chiffreOptions)
 

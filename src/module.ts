@@ -9,10 +9,10 @@ export interface Options {
 const defaultOptions: Options = {
   projectId: undefined,
   publicKey: undefined,
-  debug: false
+  debug: false,
 }
 
-const chiffreModule: Module<Options> = function(moduleOptions?: Options) {
+const chiffreModule: Module<Options> = function (moduleOptions?: Options) {
   const options: Options = Object.assign(
     {},
     defaultOptions,
@@ -27,15 +27,15 @@ const chiffreModule: Module<Options> = function(moduleOptions?: Options) {
       ...(options.publicKey ? { publicKey: options.publicKey } : {}),
       ...(options.projectId
         ? { pushURL: `https://push.chiffre.io/${options.projectId}` }
-        : {})
-    }
+        : {}),
+    },
   }
 
   const chiffreScript = {
     src: 'https://embed.chiffre.io/analytics.js',
     crossOrigin: 'anonymous',
     async: true,
-    defer: true
+    defer: true,
   }
 
   const enabled =
