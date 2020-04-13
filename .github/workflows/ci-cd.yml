@@ -75,13 +75,6 @@ jobs:
         with:
           node-version: 12.x
           registry-url: 'https://registry.npmjs.org'
-      - name: Cache Node.js modules
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.OS }}-node-12.x-${{ hashFiles('**/package-lock.json') }}
-      - name: Install Dependencies
-        run: npm install
       - name: Download build artifacts
         uses: actions/download-artifact@v1
         with:
