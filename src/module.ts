@@ -26,7 +26,7 @@ const chiffreModule: Module<Options> = function (moduleOptions?: Options) {
     json: {
       ...(options.publicKey ? { publicKey: options.publicKey } : {}),
       ...(options.projectId
-        ? { pushURL: `https://push.chiffre.io/${options.projectId}` }
+        ? { pushURL: `https://push.chiffre.io/event/${options.projectId}` }
         : {}),
     },
   }
