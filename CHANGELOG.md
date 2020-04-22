@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2020-04-22
+### Fixed
+- Uploaded npm package was missing artifacts in version 0.2.0
+
 ## [0.2.0] - 2020-04-22
 ### Fixed
 - Update Chiffre Analytics events push URL (PR #31)
