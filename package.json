@@ -33,7 +33,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@nuxt/types": "^0.7.0",
+    "@nuxt/types": "^0.7.4",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.11.1",
     "@typescript-eslint/eslint-plugin": "^2.28.0",

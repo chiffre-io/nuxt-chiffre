@@ -9,13 +9,13 @@ export interface Options {
   debug: boolean
 }
 
-const defaultOptions: Options = {
+export const defaultOptions: Options = {
   projectId: undefined,
   publicKey: undefined,
   debug: false,
 }
 
-const chiffreModule: Module<Options> = function (moduleOptions?: Options) {
+const chiffreModule: Module<Options> = function (moduleOptions) {
   const options: Options = Object.assign(
     {},
     defaultOptions,

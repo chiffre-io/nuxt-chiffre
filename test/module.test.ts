@@ -1,5 +1,6 @@
 import module, {
   Options,
+  defaultOptions,
   chiffreEmbedScriptUrl,
   chiffrePushBaseUrl,
 } from '../src/module'
@@ -12,7 +13,7 @@ interface ModuleThis {
     head: MetaInfo
   }
   nuxt: undefined
-  chiffreModule: (moduleOptions?: Options) => Promise<void> | void
+  chiffreModule: (moduleOptions: Options) => Promise<void> | void
 }
 
 function generateModuleThis(chiffreOptions?: Options): ModuleThis {
@@ -67,7 +68,7 @@ describe('module nuxt-chiffre production', () => {
   test('is disabled with default options', () => {
     const self = generateModuleThis()
 
-    self.chiffreModule()
+    self.chiffreModule(defaultOptions)
 
     checkDisabled(self)
   })
@@ -80,7 +81,7 @@ describe('module nuxt-chiffre production', () => {
     }
     const self = generateModuleThis(chiffreOptions)
 
-    self.chiffreModule()
+    self.chiffreModule(defaultOptions)
 
     checkEnabled(self, chiffreOptions)
   })
@@ -93,7 +94,7 @@ describe('module nuxt-chiffre production', () => {
     }
     const self = generateModuleThis(chiffreOptions)
 
-    self.chiffreModule()
+    self.chiffreModule(defaultOptions)
 
     checkDisabled(self)
   })
@@ -106,7 +107,7 @@ describe('module nuxt-chiffre production', () => {
     }
     const self = generateModuleThis(chiffreOptions)
 
-    self.chiffreModule()
+    self.chiffreModule(defaultOptions)
 
     checkDisabled(self)
   })
@@ -129,7 +130,7 @@ describe('module nuxt-chiffre development', () => {
     }
     const self = generateModuleThis(chiffreOptions)
 
-    self.chiffreModule()
+    self.chiffreModule(defaultOptions)
 
     checkDisabled(self)
   })
@@ -142,7 +143,7 @@ describe('module nuxt-chiffre development', () => {
     }
     const self = generateModuleThis(chiffreOptions)
 
-    self.chiffreModule()
+    self.chiffreModule(defaultOptions)
 
     checkEnabled(self, chiffreOptions)
   })
