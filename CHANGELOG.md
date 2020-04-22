@@ -26,7 +26,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release of nuxt-chiffre
 
-[unreleased]: https://github.com/rclement/nuxt-chiffre/compare/0.2.0...master
+[unreleased]: https://github.com/rclement/nuxt-chiffre/compare/0.2.1...master
+[0.2.1]: https://github.com/rclement/nuxt-chiffre/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/rclement/nuxt-chiffre/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/rclement/nuxt-chiffre/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/rclement/nuxt-chiffre/tree/0.1.0
