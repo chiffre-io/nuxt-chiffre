@@ -1,4 +1,8 @@
-import module, { Options } from '../src/module'
+import module, {
+  Options,
+  chiffreEmbedScriptUrl,
+  chiffrePushBaseUrl,
+} from '../src/module'
 import { MetaInfo } from 'vue-meta'
 
 interface ModuleThis {
@@ -38,14 +42,14 @@ function checkEnabled(moduleThis: ModuleThis, chiffreOptions: Options): void {
         type: 'application/json',
         json: {
           publicKey: chiffreOptions.publicKey,
-          pushURL: `https://push.chiffre.io/${chiffreOptions.projectId}`,
+          pushURL: `${chiffrePushBaseUrl}/${chiffreOptions.projectId}`,
         },
       },
       {
         async: true,
         crossOrigin: 'anonymous',
         defer: true,
-        src: 'https://embed.chiffre.io/analytics.js',
+        src: chiffreEmbedScriptUrl,
       },
     ],
   })

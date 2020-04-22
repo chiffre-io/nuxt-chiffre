@@ -1,5 +1,8 @@
 import { Module } from '@nuxt/types'
 
+export const chiffreEmbedScriptUrl = 'https://embed.chiffre.io/analytics.js'
+export const chiffrePushBaseUrl = 'https://push.chiffre.io/event'
+
 export interface Options {
   projectId?: string
   publicKey?: string
@@ -26,13 +29,13 @@ const chiffreModule: Module<Options> = function (moduleOptions?: Options) {
     json: {
       ...(options.publicKey ? { publicKey: options.publicKey } : {}),
       ...(options.projectId
-        ? { pushURL: `https://push.chiffre.io/event/${options.projectId}` }
+        ? { pushURL: `${chiffrePushBaseUrl}/${options.projectId}` }
         : {}),
     },
   }
 
   const chiffreScript = {
-    src: 'https://embed.chiffre.io/analytics.js',
+    src: chiffreEmbedScriptUrl,
     crossOrigin: 'anonymous',
     async: true,
     defer: true,
