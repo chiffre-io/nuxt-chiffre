@@ -2,6 +2,7 @@ import { Module } from '@nuxt/types'
 
 export const chiffreEmbedScriptUrl = 'https://embed.chiffre.io/analytics.js'
 export const chiffrePushBaseUrl = 'https://push.chiffre.io/event'
+export const chiffrePushNoScriptUrl = 'https://push.chiffre.io/noscript'
 
 export interface Options {
   projectId?: string
@@ -40,6 +41,11 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
     async: true,
     defer: true,
   }
+  const chiffreNoScriptImg = `<img
+  src="${chiffrePushNoScriptUrl}/${options.projectId}?xhr=noscript"
+  alt="Chiffre.io anonymous visit counting for clients without JavaScript"
+  crossorigin="anonymous"
+/>`
 
   const enabled =
     (!this.options.dev &&
@@ -50,6 +56,10 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
 
   if (enabled && this.options.head && this.options.head.script) {
     this.options.head.script.push(chiffreConfig, chiffreScript)
+    this.options.head.noscript?.push({
+      body: true,
+      innerHTML: chiffreNoScriptImg,
+    })
   }
 }
 

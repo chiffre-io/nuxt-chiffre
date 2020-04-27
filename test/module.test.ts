@@ -3,6 +3,7 @@ import module, {
   defaultOptions,
   chiffreEmbedScriptUrl,
   chiffrePushBaseUrl,
+  chiffrePushNoScriptUrl,
 } from '../src/module'
 import { MetaInfo } from 'vue-meta'
 
@@ -24,6 +25,7 @@ function generateModuleThis(chiffreOptions?: Options): ModuleThis {
       dev: false,
       head: {
         script: [],
+        noscript: [],
       },
       ...(chiffreOptions ? { chiffre: chiffreOptions } : {}),
     },
@@ -32,7 +34,7 @@ function generateModuleThis(chiffreOptions?: Options): ModuleThis {
 }
 
 function checkDisabled(moduleThis: ModuleThis): void {
-  expect(moduleThis.options.head).toStrictEqual({ script: [] })
+  expect(moduleThis.options.head).toStrictEqual({ script: [], noscript: [] })
 }
 
 function checkEnabled(moduleThis: ModuleThis, chiffreOptions: Options): void {
@@ -51,6 +53,16 @@ function checkEnabled(moduleThis: ModuleThis, chiffreOptions: Options): void {
         crossOrigin: 'anonymous',
         defer: true,
         src: chiffreEmbedScriptUrl,
+      },
+    ],
+    noscript: [
+      {
+        body: true,
+        innerHTML: `<img
+  src="${chiffrePushNoScriptUrl}/${chiffreOptions.projectId}?xhr=noscript"
+  alt="Chiffre.io anonymous visit counting for clients without JavaScript"
+  crossorigin="anonymous"
+/>`,
       },
     ],
   })
