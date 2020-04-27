@@ -47,12 +47,14 @@ function checkEnabled(moduleThis: ModuleThis, chiffreOptions: Options): void {
           publicKey: chiffreOptions.publicKey,
           pushURL: `${chiffrePushBaseUrl}/${chiffreOptions.projectId}`,
         },
+        body: true,
       },
       {
         async: true,
         crossOrigin: 'anonymous',
         defer: true,
         src: chiffreEmbedScriptUrl,
+        body: true,
       },
     ],
     noscript: [

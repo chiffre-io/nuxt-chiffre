@@ -27,6 +27,7 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
   const chiffreConfig = {
     id: 'chiffre:analytics-config',
     type: 'application/json',
+    body: true,
     json: {
       ...(options.publicKey ? { publicKey: options.publicKey } : {}),
       ...(options.projectId
@@ -40,6 +41,7 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
     crossOrigin: 'anonymous',
     async: true,
     defer: true,
+    body: true,
   }
   const chiffreNoScriptImg = `<img
   src="${chiffrePushNoScriptUrl}/${options.projectId}?xhr=noscript"
