@@ -60,6 +60,9 @@ function checkEnabled(moduleThis: ModuleThis, chiffreOptions: Options): void {
     noscript: [
       {
         body: true,
+        once: true,
+        hid: 'chiffre:noscript',
+        vmid: 'chiffre:noscript',
         innerHTML: `<img
   src="${chiffrePushNoScriptUrl}/${chiffreOptions.projectId}?xhr=noscript"
   alt="Chiffre.io anonymous visit counting for clients without JavaScript"
@@ -67,6 +70,9 @@ function checkEnabled(moduleThis: ModuleThis, chiffreOptions: Options): void {
 />`,
       },
     ],
+    __dangerouslyDisableSanitizersByTagID: {
+      'chiffre:noscript': ['innerHTML'],
+    },
   })
 }
 

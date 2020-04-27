@@ -58,10 +58,20 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
 
   if (enabled && this.options.head && this.options.head.script) {
     this.options.head.script.push(chiffreConfig, chiffreScript)
-    this.options.head.noscript?.push({
-      body: true,
-      innerHTML: chiffreNoScriptImg,
-    })
+    this.options.head.noscript = [
+      ...(this.options.head.noscript || []),
+      {
+        body: true,
+        once: true,
+        hid: 'chiffre:noscript', // for Nuxt.js, see nuxt/vue-meta#537
+        vmid: 'chiffre:noscript', // for vue-meta
+        innerHTML: chiffreNoScriptImg,
+      },
+    ]
+    this.options.head.__dangerouslyDisableSanitizersByTagID = {
+      ...this.options.head.__dangerouslyDisableSanitizersByTagID,
+      'chiffre:noscript': ['innerHTML'],
+    }
   }
 }
 
