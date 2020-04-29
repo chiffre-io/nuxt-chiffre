@@ -44,7 +44,7 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
     body: true,
   }
   const chiffreNoScriptImg = `<img
-  src="${chiffrePushNoScriptUrl}/${options.projectId}?xhr=noscript"
+  src="${chiffrePushNoScriptUrl}/${options.projectId}"
   alt="Chiffre.io anonymous visit counting for clients without JavaScript"
   crossorigin="anonymous"
 />`
