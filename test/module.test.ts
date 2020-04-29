@@ -17,20 +17,24 @@ interface ModuleThis {
   chiffreModule: (moduleOptions: Options) => Promise<void> | void
 }
 
-function generateModuleThis(chiffreOptions?: Options): ModuleThis {
+function generateModuleThisBase(chiffreOptions?: Options): ModuleThis {
   return {
     extendBuild: (): void => undefined,
     nuxt: undefined,
     options: {
       dev: false,
-      head: {
-        script: [],
-        noscript: [],
-      },
+      head: {},
       ...(chiffreOptions ? { chiffre: chiffreOptions } : {}),
     },
     chiffreModule: module,
   }
+}
+
+function generateModuleThis(chiffreOptions?: Options): ModuleThis {
+  const mod = generateModuleThisBase(chiffreOptions)
+  mod.options.head.script = []
+  mod.options.head.noscript = []
+  return mod
 }
 
 function checkDisabled(moduleThis: ModuleThis): void {
@@ -99,6 +103,19 @@ describe('module nuxt-chiffre production', () => {
       debug: false,
     }
     const self = generateModuleThis(chiffreOptions)
+
+    self.chiffreModule(defaultOptions)
+
+    checkEnabled(self, chiffreOptions)
+  })
+
+  test('is enabled with projectId and publicKey, with no base script and noscript', () => {
+    const chiffreOptions = {
+      projectId: 'fake-project-id',
+      publicKey: 'fake-public-key',
+      debug: false,
+    }
+    const self = generateModuleThisBase(chiffreOptions)
 
     self.chiffreModule(defaultOptions)
 

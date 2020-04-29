@@ -43,11 +43,17 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
     defer: true,
     body: true,
   }
-  const chiffreNoScriptImg = `<img
+
+  const chiffreNoScript = {
+    body: true,
+    once: true,
+    hid: 'chiffre:noscript',
+    innerHTML: `<img
   src="${chiffrePushNoScriptUrl}/${options.projectId}"
   alt="Chiffre.io anonymous visit counting for clients without JavaScript"
   crossorigin="anonymous"
-/>`
+/>`,
+  }
 
   const enabled =
     (!this.options.dev &&
@@ -56,17 +62,18 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
       options.publicKey) ||
     options.debug
 
-  if (enabled && this.options.head && this.options.head.script) {
-    this.options.head.script.push(chiffreConfig, chiffreScript)
+  if (enabled && this.options.head) {
+    this.options.head.script = [
+      ...(this.options.head.script || []),
+      chiffreConfig,
+      chiffreScript,
+    ]
+
     this.options.head.noscript = [
       ...(this.options.head.noscript || []),
-      {
-        body: true,
-        once: true,
-        hid: 'chiffre:noscript',
-        innerHTML: chiffreNoScriptImg,
-      },
+      chiffreNoScript,
     ]
+
     this.options.head.__dangerouslyDisableSanitizersByTagID = {
       ...this.options.head.__dangerouslyDisableSanitizersByTagID,
       'chiffre:noscript': ['innerHTML'],
