@@ -63,8 +63,7 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
       {
         body: true,
         once: true,
-        hid: 'chiffre:noscript', // for Nuxt.js, see nuxt/vue-meta#537
-        vmid: 'chiffre:noscript', // for vue-meta
+        hid: 'chiffre:noscript',
         innerHTML: chiffreNoScriptImg,
       },
     ]

@@ -62,7 +62,6 @@ function checkEnabled(moduleThis: ModuleThis, chiffreOptions: Options): void {
         body: true,
         once: true,
         hid: 'chiffre:noscript',
-        vmid: 'chiffre:noscript',
         innerHTML: `<img
   src="${chiffrePushNoScriptUrl}/${chiffreOptions.projectId}"
   alt="Chiffre.io anonymous visit counting for clients without JavaScript"
