@@ -33,7 +33,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.12",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.16",
     "@typescript-eslint/eslint-plugin": "^4.11.1",
@@ -43,7 +43,7 @@
     "eslint-plugin-prettier": "^3.3.0",
     "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "nuxt": "^2.14.7",
+    "nuxt": "^2.14.12",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "typescript": "^4.1.3"
