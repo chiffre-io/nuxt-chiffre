@@ -62,7 +62,7 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
       options.publicKey) ||
     options.debug
 
-  if (enabled && this.options.head) {
+  if (enabled && typeof this.options.head === 'object') {
     this.options.head.script = [
       ...(this.options.head.script || []),
       chiffreConfig,
