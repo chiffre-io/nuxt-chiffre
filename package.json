@@ -7,6 +7,18 @@
     "email": "contact@romain-clement.net",
     "url": "https://romain-clement.net"
   },
+  "maintainers": [
+    {
+      "name": "Romain Clement",
+      "email": "contact@romain-clement.net",
+      "url": "https://romain-clement.net"
+    },
+    {
+      "name": "François Best",
+      "email": "contact@francoisbest.com",
+      "url": "https://francoisbest.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chiffre-io/nuxt-chiffre.git"
