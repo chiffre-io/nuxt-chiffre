@@ -44,7 +44,7 @@ https://chiffre.io/projects/yourProjectID
 ### `publicKey` (required)
 
 The Chiffre project public key. It can be found in the project settings, and
-looks like `pk.{42 base64 characters}`.
+looks like `pk.{43 base64 characters}`.
 
 ### `debug`
 
