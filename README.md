@@ -35,11 +35,16 @@ export default {
 
 ### `projectId` (required)
 
-The Chiffre project identifier.
+The Chiffre project identifier. It can be found in the project URL:
+
+```
+https://chiffre.io/projects/yourProjectID
+```
 
 ### `publicKey` (required)
 
-The Chiffre project public key.
+The Chiffre project public key. It can be found in the project settings, and
+looks like `pk.{42 base64 characters}`.
 
 ### `debug`
 
