@@ -22,7 +22,7 @@ Add `nuxt-chiffre` to modules section of `nuxt.config.js`:
 
 ```js
 export default {
-  modules: [['nuxt-chiffre']],
+  modules: ['nuxt-chiffre'],
   chiffre: {
     projectId: '<chiffre-project-id>',
     publicKey: '<chiffre-public-key>',
