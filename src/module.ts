@@ -1,18 +1,18 @@
 import { Module } from '@nuxt/types'
 
-export const chiffreEmbedScriptUrl = 'https://embed.chiffre.io/analytics.js'
-export const chiffrePushBaseUrl = 'https://push.chiffre.io/event'
-export const chiffrePushNoScriptUrl = 'https://push.chiffre.io/noscript'
+export const chiffreBaseUrl = 'https://chiffre.io'
 
 export interface Options {
   projectId?: string
   publicKey?: string
+  ignorePaths?: string[]
   debug: boolean
 }
 
 export const defaultOptions: Options = {
   projectId: undefined,
   publicKey: undefined,
+  ignorePaths: undefined,
   debug: false,
 }
 
@@ -24,24 +24,16 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
     this.options.chiffre
   )
 
-  const chiffreConfig = {
-    id: 'chiffre:analytics-config',
-    type: 'application/json',
-    body: true,
-    json: {
-      ...(options.publicKey ? { publicKey: options.publicKey } : {}),
-      ...(options.projectId
-        ? { pushURL: `${chiffrePushBaseUrl}/${options.projectId}` }
-        : {}),
-    },
-  }
-
   const chiffreScript = {
-    src: chiffreEmbedScriptUrl,
+    src: `${chiffreBaseUrl}/analytics.js`,
+    id: 'chiffre:analytics',
     crossOrigin: 'anonymous',
     async: true,
     defer: true,
     body: true,
+    'data-chiffre-project-id': options.projectId,
+    'data-chiffre-public-key': options.publicKey,
+    'data-chiffre-ignore-paths': options.ignorePaths?.join(','),
   }
 
   const chiffreNoScript = {
@@ -49,7 +41,7 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
     once: true,
     hid: 'chiffre:noscript',
     innerHTML: `<img
-  src="${chiffrePushNoScriptUrl}/${options.projectId}"
+  src="${chiffreBaseUrl}/noscript/${options.projectId}"
   alt="Chiffre.io anonymous visit counting for clients without JavaScript"
   crossorigin="anonymous"
 />`,
@@ -65,7 +57,6 @@ const chiffreModule: Module<Options> = function (moduleOptions) {
   if (enabled && typeof this.options.head === 'object') {
     this.options.head.script = [
       ...(this.options.head.script || []),
-      chiffreConfig,
       chiffreScript,
     ]
 

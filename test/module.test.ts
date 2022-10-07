@@ -1,11 +1,5 @@
-import module, {
-  Options,
-  defaultOptions,
-  chiffreEmbedScriptUrl,
-  chiffrePushBaseUrl,
-  chiffrePushNoScriptUrl,
-} from '../src/module'
 import { MetaInfo } from 'vue-meta'
+import module, { chiffreBaseUrl, defaultOptions, Options } from '../src/module'
 
 interface ModuleThis {
   extendBuild(): void
@@ -45,20 +39,15 @@ function checkEnabled(moduleThis: ModuleThis, chiffreOptions: Options): void {
   expect(moduleThis.options.head).toStrictEqual({
     script: [
       {
-        id: 'chiffre:analytics-config',
-        type: 'application/json',
-        json: {
-          publicKey: chiffreOptions.publicKey,
-          pushURL: `${chiffrePushBaseUrl}/${chiffreOptions.projectId}`,
-        },
-        body: true,
-      },
-      {
         async: true,
         crossOrigin: 'anonymous',
         defer: true,
-        src: chiffreEmbedScriptUrl,
+        src: 'https://chiffre.io/analytics.js',
         body: true,
+        id: 'chiffre:analytics',
+        'data-chiffre-project-id': chiffreOptions.projectId,
+        'data-chiffre-public-key': chiffreOptions.publicKey,
+        'data-chiffre-ignore-paths': chiffreOptions.ignorePaths?.join(','),
       },
     ],
     noscript: [
@@ -67,7 +56,7 @@ function checkEnabled(moduleThis: ModuleThis, chiffreOptions: Options): void {
         once: true,
         hid: 'chiffre:noscript',
         innerHTML: `<img
-  src="${chiffrePushNoScriptUrl}/${chiffreOptions.projectId}"
+  src="${chiffreBaseUrl}/noscript/${chiffreOptions.projectId}"
   alt="Chiffre.io anonymous visit counting for clients without JavaScript"
   crossorigin="anonymous"
 />`,
@@ -175,6 +164,20 @@ describe('module nuxt-chiffre development', () => {
     const chiffreOptions = {
       projectId: 'fake-project-id',
       publicKey: 'fake-public-key',
+      debug: true,
+    }
+    const self = generateModuleThis(chiffreOptions)
+
+    self.chiffreModule(defaultOptions)
+
+    checkEnabled(self, chiffreOptions)
+  })
+
+  test('supports ignorePaths option', () => {
+    const chiffreOptions: Options = {
+      projectId: 'fake-project-id',
+      publicKey: 'fake-public-key',
+      ignorePaths: ['/foo', '/bar'],
       debug: true,
     }
     const self = generateModuleThis(chiffreOptions)
